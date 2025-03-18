@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background: #333;
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>IronGuard Helmet Store</h1>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+    <main>
+        <div>
+            <p>
+                IronGuard Helmets is a cutting-edge helmet company dedicated to providing top-tier protection for
+                motorcyclists, cyclists, and extreme sports enthusiasts. Founded with a mission to blend safety with
+                style, IronGuard uses advanced impact-resistant materials and aerodynamically engineered designs to
+                ensure maximum comfort and durability. Their helmets feature state-of-the-art ventilation systems,
+                anti-fog visors, and smart technology integration, including Bluetooth connectivity for hands-free
+                communication. Whether you're cruising on the highway or tackling rugged terrains, IronGuard Helmets
+                delivers unmatched safety without compromising aesthetics. With a commitment to innovation and rigorous
+                safety testing, IronGuard is redefining head protection for adventurers worldwide.
+            </p>
+        </div>
+    </main>
+    <script>
+        function toggleMenu() {
+            document.querySelector(".menu").classList.toggle("active");
+        }
+    </script>
+</body>
+
+</html>
