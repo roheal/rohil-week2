@@ -1,105 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Website</title>
+    <title>Collector Store</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            text-align: center;
+            background-color: #f8f9fa;
         }
-
-        header {
-            background: #333;
+        .header {
+            background-color: #007bff;
             color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .menu {
-            list-style: none;
-            padding: 0;
-            display: flex;
-        }
-
-        .menu li {
-            margin: 0 10px;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .hamburger {
-            display: none;
+            padding: 15px;
             font-size: 24px;
-            cursor: pointer;
         }
-
-        @media (max-width: 768px) {
-            .menu {
+        .menu {
+            display: none;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .toggle-menu {
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+        }
+        .content {
+            padding: 20px;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product .price {
+            font-size: 18px;
+            color: #007bff;
+            margin: 10px 0;
+        }
+        .product button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .product button:hover {
+            background-color: #218838;
+        }
+        @media (min-width: 768px) {
+            .toggle-menu {
                 display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                background: #333;
-                width: 100%;
-                text-align: center;
             }
-
-            .menu li {
-                margin: 10px 0;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .menu.active {
+            .menu {
                 display: flex;
+                justify-content: center;
+                gap: 20px;
+                background: #007bff;
+                padding: 10px;
+            }
+            .menu a {
+                color: white;
+                font-weight: bold;
+            }
+            .product-container {
+                justify-content: space-around;
             }
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <h1>IronGuard Helmet Store</h1>
-        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-        <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </header>
-    <main>
-        <div>
-            <p>
-                IronGuard Helmets is a cutting-edge helmet company dedicated to providing top-tier protection for
-                motorcyclists, cyclists, and extreme sports enthusiasts. Founded with a mission to blend safety with
-                style, IronGuard uses advanced impact-resistant materials and aerodynamically engineered designs to
-                ensure maximum comfort and durability. Their helmets feature state-of-the-art ventilation systems,
-                anti-fog visors, and smart technology integration, including Bluetooth connectivity for hands-free
-                communication. Whether you're cruising on the highway or tackling rugged terrains, IronGuard Helmets
-                delivers unmatched safety without compromising aesthetics. With a commitment to innovation and rigorous
-                safety testing, IronGuard is redefining head protection for adventurers worldwide.
-            </p>
-        </div>
-    </main>
+    <div class="header">Collector Store</div>
+    <button class="toggle-menu">☰ Menu</button>
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="content">
+        <h1>Welcome to Collector Store</h1>
+        <p>Your one-stop shop for digital top-ups and game recharges.</p>
+        <div class="product-container"></div>
+    </div>
+
     <script>
-        function toggleMenu() {
-            document.querySelector(".menu").classList.toggle("active");
-        }
+        $(document).ready(function() {
+            // Sample products with images of Netflix and Spotify
+            const products = [
+                
+                {
+                    name: "Spotify Premium",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
+                    price: "$9.99"
+                },
+                
+                
+                {
+                    name: "Amazon Gift Card",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+                    price: "$25.00"
+                }
+            ];
+
+            // Dynamically add products
+            products.forEach(product => {
+                const productHtml = `
+                    <div class="product">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <div class="price">${product.price}</div>
+                        <button>Buy Now</button>
+                    </div>
+                `;
+                $(".product-container").append(productHtml);
+            });
+
+            $(".toggle-menu").click(function() {
+                $(".menu").slideToggle();
+            });
+        });
     </script>
 </body>
-
 </html>
